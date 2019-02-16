@@ -26,10 +26,14 @@ public class DriveArcade extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double moveSpeed = Robot.m_oi.flightStick.getRawAxis(RobotMap.FLIGHTSTICK_MOVE_AXIS);
-    double rotateSpeed = Robot.m_oi.flightStick.getRawAxis(RobotMap.FLIGHTSTICK_ROTATE_AXIS);
+    double speedLimit = 0.5;
+    double moveSpeed = -1.0 * Robot.m_oi.logitech.getRawAxis(RobotMap.LOGITECH_MOVE_AXIS);
+    double rotateSpeed = Robot.m_oi.logitech.getRawAxis(RobotMap.LOGITECH_ROTATE_AXIS);
+    // double moveSpeed = -1.0 * Robot.m_oi.flightStick.getRawAxis(RobotMap.FLIGHTSTICK_MOVE_AXIS);
+    // double rotateSpeed = Robot.m_oi.flightStick.getRawAxis(RobotMap.FLIGHTSTICK_ROTATE_AXIS);
 
-    Robot.m_drivetrain.arcadeDrive(moveSpeed, rotateSpeed);
+    Robot.m_drivetrain.arcadeDrive(speedLimit * moveSpeed, speedLimit * rotateSpeed);
+    //Robot.m_drivetrain.
   }
 
   // Make this return true when this Command no longer needs to run execute()
